@@ -1,6 +1,6 @@
 services:
   api:
-    image: ghcr.io/saleor/saleor:3.22
+    image: ghcr.io/scutrobotlab/saleor:unstable-main
     ports:
       - 8000:8000
     restart: unless-stopped
@@ -23,7 +23,7 @@ services:
       - ALLOWED_HOSTS=localhost,127.0.0.1,api
 
   dashboard:
-    image: ghcr.io/saleor/saleor-dashboard:latest
+    image: ghcr.io/scutrobotlab/saleor-dashboard:latest
     ports:
       - 9000:80
     restart: unless-stopped
@@ -53,7 +53,7 @@ services:
       - saleor-cache:/data
 
   worker:
-    image: ghcr.io/saleor/saleor:3.22
+    image: ghcr.io/scutrobotlab/saleor:unstable-main
     command: celery -A saleor --app=saleor.celeryconf:app worker --loglevel=info -B
     restart: unless-stopped
     networks:
